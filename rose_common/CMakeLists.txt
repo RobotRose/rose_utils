@@ -19,13 +19,15 @@ include_directories(
 	include 
 )
 
-# add_library(rose_common 
-# 	SHARED
-	
-# )
+add_library(rose_common 
+	SHARED
+	src/PID.cpp
+	src/common.cpp
+	src/backward.cpp	
+)
 
-# target_link_libraries(rose_common ${catkin_LIBRARIES})
-# add_dependencies(rose_common ${PROJECT_NAME}_generate_messages_cpp)
+target_link_libraries(rose_common ${catkin_LIBRARIES})
+add_dependencies(rose_common ${PROJECT_NAME}_generate_messages_cpp)
 
 install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION include/${CATKIN_PACKAGE_INCLUDE_DESTINATION}

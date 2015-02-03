@@ -23,7 +23,7 @@
 // - g++/clang++ -lbfd ...
 // #define BACKWARD_HAS_BFD 1
 
-#include "rose20_common/backward.hpp"
+#include "backward/backward.hpp"
 
 namespace backward {
 
