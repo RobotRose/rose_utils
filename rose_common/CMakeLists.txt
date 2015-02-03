@@ -10,8 +10,8 @@ set(CMAKE_CXX_FLAGS "-std=c++0x -fPIC -g")
 catkin_package(
     INCLUDE_DIRS 
 		include
-    # LIBRARIES 
-		# rose_common
+    LIBRARIES 
+		rose_common
 )
 
 include_directories(
