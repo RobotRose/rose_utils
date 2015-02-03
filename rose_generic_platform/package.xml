@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <name>rose_generic_platform</name>
+  <version>0.0.1</version>
+  <description>The rose_generic_platform package</description>
+  <maintainer email="langen@robot-rose.nl">Mathijs de Langen</maintainer>
+
+  <license>BSD</license>
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>rose_common</build_depend>
+
+  <run_depend>rose_common</run_depend>
+
+  <export>
+  </export>
+</package>
