@@ -55,7 +55,7 @@ bool TFHelper::setTransform(tf::Transform tf)
 
 bool TFHelper::setTransform(const geometry_msgs::Pose& pose)
 {
-	geometry_msgs::Vector3 rpy = rose20_common::quaternionToRPY(pose.orientation);
+	geometry_msgs::Vector3 rpy = rose_conversions::quaternionToRPY(pose.orientation);
 	return setTransform(rpy.x, rpy.y, rpy.z, pose.position.x, pose.position.y, pose.position.z);
 }
 

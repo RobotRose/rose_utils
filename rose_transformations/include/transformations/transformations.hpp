@@ -15,6 +15,9 @@
 
 #include <tf/transform_listener.h> 
 
+#include "rose_geometry/point.hpp"
+#include "rose_geometry/stamped.hpp"
+
 #include "ros_name/ros_name.hpp"
 
 using geometry_msgs::Point;
@@ -22,6 +25,7 @@ using geometry_msgs::Point32;
 using geometry_msgs::Pose;
 using geometry_msgs::PoseStamped;
 
+namespace rose_transformations { 
 /**
  * Transform PointStamped to a particular frame. It is transformed in the time stamp set in the header of the point.
  * @param  tf      Transformlistener
@@ -62,7 +66,7 @@ bool transformToLatestFrame( const tf::TransformListener& tf, const std::string 
  * @param  timeout How long to wait for the frame to be available
  * @return         If the transform was succesful
  */
-bool transformToLatestFrame( const tf::TransformListener& tf, const std::string frame, const rose20_common::geometry::Stamped<rose20_common::geometry::Point>& stamped_point, const double timeout = 10.0);
+bool transformToLatestFrame( const tf::TransformListener& tf, const std::string frame, const rose_geometry::Stamped<rose_geometry::Point>& stamped_point, const double timeout = 10.0);
 bool transformToLatestFrame( const tf::TransformListener& tf, const std::string frame, geometry_msgs::PoseStamped& pose, const double timeout = 10.0);
 bool transformToLatestFrame( const tf::TransformListener& tf, const std::string frame, sensor_msgs::PointCloud& pose, const double timeout = 10.0);
 //! @todo OH: Should these have a timeout? Its latest, they should have max_age as getLatestFrameInFrame?
@@ -177,5 +181,6 @@ bool setXYZInFrame ( const tf::TransformListener& tf, const std::string frame, c
  */
 bool setXYZInFrame ( const tf::TransformListener& tf, const std::string frame, const double x, const double y, const double z, geometry_msgs::PoseStamped& pose, const double timeout = 10.0);
 
+} // rose_transformations
 
 #endif // TRANSFORMATIONS_HPP

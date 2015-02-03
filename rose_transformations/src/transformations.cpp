@@ -72,7 +72,7 @@ bool transformToFrame( const tf::TransformListener& tf, const std::string frame,
     return false;
 }
 
-bool transformToLatestFrame( const tf::TransformListener& tf, const std::string frame, const rose20_common::geometry::Stamped<rose20_common::geometry::Point>& stamped_point, const double timeout )
+bool transformToLatestFrame( const tf::TransformListener& tf, const std::string frame, const rose_geometry::Stamped<rose_geometry::Point>& stamped_point, const double timeout )
 {
     geometry_msgs::PointStamped point_msg;
     point_msg.header    = stamped_point.header;
@@ -262,7 +262,7 @@ bool addXYZInFrame ( const tf::TransformListener& tf, const std::string frame, c
 {
     std::string old_frame = point.header.frame_id;
     // Transform to frame
-    if ( not rose20_common::transformToFrame(tf, frame, point, timeout) )
+    if ( not rose_transformations::transformToFrame(tf, frame, point, timeout) )
       return false ;
 
     // Add x,y,z
@@ -271,7 +271,7 @@ bool addXYZInFrame ( const tf::TransformListener& tf, const std::string frame, c
     point.point.z += z;
 
     // Transform back
-    if ( not rose20_common::transformToFrame(tf, old_frame, point, timeout) )
+    if ( not rose_transformations::transformToFrame(tf, old_frame, point, timeout) )
       return false;
 
     return true;
@@ -282,7 +282,7 @@ bool addXYZInFrame ( const tf::TransformListener& tf, const std::string frame, c
     std::string old_frame = pose.header.frame_id;
 
     // Transform to frame
-    if ( not rose20_common::transformToFrame(tf, frame, pose, timeout) )
+    if ( not rose_transformations::transformToFrame(tf, frame, pose, timeout) )
       return false;
 
     // Add x,y,z
@@ -291,7 +291,7 @@ bool addXYZInFrame ( const tf::TransformListener& tf, const std::string frame, c
     pose.pose.position.z += z;
 
     // Transform back
-    if ( not rose20_common::transformToFrame(tf, old_frame, pose, timeout) )
+    if ( not rose_transformations::transformToFrame(tf, old_frame, pose, timeout) )
       return false;
 
     return true;
@@ -301,7 +301,7 @@ bool addXYZInFrameNow ( const tf::TransformListener& tf, const std::string frame
 {
     std::string old_frame = point.header.frame_id;
     // Transform to frame
-    if ( not rose20_common::transformToFrameNow(tf, frame, point, timeout) )
+    if ( not rose_transformations::transformToFrameNow(tf, frame, point, timeout) )
       return false ;
 
     // Add x,y,z
@@ -310,7 +310,7 @@ bool addXYZInFrameNow ( const tf::TransformListener& tf, const std::string frame
     point.point.z += z;
 
     // Transform back
-    if ( not rose20_common::transformToFrameNow(tf, old_frame, point, timeout) )
+    if ( not rose_transformations::transformToFrameNow(tf, old_frame, point, timeout) )
       return false;
 
     return true;
@@ -321,7 +321,7 @@ bool addXYZInFrameNow ( const tf::TransformListener& tf, const std::string frame
     std::string old_frame = pose.header.frame_id;
 
     // Transform to frame
-    if ( not rose20_common::transformToFrameNow(tf, frame, pose, timeout) )
+    if ( not rose_transformations::transformToFrameNow(tf, frame, pose, timeout) )
       return false;
 
     // Add x,y,z
@@ -330,7 +330,7 @@ bool addXYZInFrameNow ( const tf::TransformListener& tf, const std::string frame
     pose.pose.position.z += z;
 
     // Transform back
-    if ( not rose20_common::transformToFrameNow(tf, old_frame, pose, timeout) )
+    if ( not rose_transformations::transformToFrameNow(tf, old_frame, pose, timeout) )
       return false;
 
     return true;
@@ -341,7 +341,7 @@ bool setXYZInFrame ( const tf::TransformListener& tf, const std::string frame, c
     std::string old_frame = point.header.frame_id;
 
     // Transform to frame
-    if ( not rose20_common::transformToFrame(tf, frame, point, timeout));
+    if ( not rose_transformations::transformToFrame(tf, frame, point, timeout));
       return false;
 
     // Add x,y,z
@@ -350,7 +350,7 @@ bool setXYZInFrame ( const tf::TransformListener& tf, const std::string frame, c
     point.point.z = z;
 
     // Transform back
-    if ( not rose20_common::transformToFrame(tf, old_frame, point, timeout))
+    if ( not rose_transformations::transformToFrame(tf, old_frame, point, timeout))
       return false;
 
     return true;
@@ -361,7 +361,7 @@ bool setXYZInFrame ( const tf::TransformListener& tf, const std::string frame, c
     std::string old_frame = pose.header.frame_id;
 
     // Transform to frame
-    if ( not rose20_common::transformToFrame(tf, frame, pose, timeout) )
+    if ( not rose_transformations::transformToFrame(tf, frame, pose, timeout) )
       return false;
 
     // Add x,y,z
@@ -370,7 +370,7 @@ bool setXYZInFrame ( const tf::TransformListener& tf, const std::string frame, c
     pose.pose.position.z = z;
 
     // Transform back
-    if ( not rose20_common::transformToFrame(tf, old_frame, pose, timeout) )
+    if ( not rose_transformations::transformToFrame(tf, old_frame, pose, timeout) )
       return false;
 
     return true;
