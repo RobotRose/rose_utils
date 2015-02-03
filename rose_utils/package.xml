@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package>
+  <name>rose_utils</name>
+  <version>0.0.1</version>
+  <description>The rose_utils package</description>
+
+   <author email="langen@robot-rose.nl">Mathijs de Langen</author>
+  <maintainer email="langen@robot-rose.nl">Mathijs de Langen</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>rose_common</run_depend>
+  <run_depend>rose_conversions</run_depend>
+  <run_depend>rose_generic_platform</run_depend>
+  <run_depend>rose_geometry</run_depend>
+  <run_depend>rose_transformations</run_depend>
+  <run_depend>rose_twist_moving_average_filter</run_depend>
+
+  <export>
+    <metapackage />
+  </export>
+</package>
