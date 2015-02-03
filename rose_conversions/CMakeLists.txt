@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(rose_conversions)
 
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED
+	COMPONENTS
+		geometry_msgs
+	)
 
 set(CMAKE_CXX_FLAGS "-std=c++0x -fPIC -g")
 
