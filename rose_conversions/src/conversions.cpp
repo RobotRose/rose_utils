@@ -164,5 +164,78 @@ geometry_msgs::Point32 pointToPoint32( const geometry_msgs::Point point )
     return point32;
 }
 
+bool getRampedVelocity(  const double& min_velocity, 
+                         const double& max_velocity, 
+                         const double& min_dist_to_goal, 
+                         const double& max_dist_velocity,
+                         const double& distance_to_goal,
+                               double& velocity )
+{
+    ROS_DEBUG("getRampedVelocity: minvel: %f, maxvel: %f, mindisttogoal: %f, max_dist_vel: %f, distance to goal: %f", 
+        min_velocity, 
+        max_velocity, 
+        min_dist_to_goal, 
+        max_dist_velocity,
+        distance_to_goal);
+
+    if (std::fabs(distance_to_goal) < min_dist_to_goal)
+    {
+        velocity = min_velocity;
+        return true;
+    }
+
+    velocity = ((max_velocity - min_velocity)/max_dist_velocity)*(distance_to_goal-min_dist_to_goal);
+    ROS_DEBUG("calculated velocity = %f", velocity);
+    // limit max
+    limit(-max_velocity, max_velocity, &velocity);
+
+    // limit min
+    if(std::fabs(velocity) < min_velocity)
+        velocity = sgn(velocity) * min_velocity;
+
+    ROS_DEBUG("end velocity = %f", velocity);
+
+    return true;
+}
+
+bool getRampedVelocity(  const double& min_velocity, 
+                         const double& max_velocity, 
+                         const double& min_dist_to_goal, 
+                         const double& max_dist_velocity,
+                         const rose20_common::geometry::Point& distance_to_goal,
+                               rose20_common::geometry::Point& velocity)
+{
+    ROS_DEBUG("getRampedVelocity: minvel: %f, maxvel: %f, mindisttogoal: %f, max_dist_vel: %f, distance to goal: (%f,%f)", 
+        min_velocity, 
+        max_velocity, 
+        min_dist_to_goal, 
+        max_dist_velocity,
+        distance_to_goal.x,
+        distance_to_goal.y);
+
+    if (rose20_common::getVectorLengthXY(distance_to_goal.x, distance_to_goal.y) < min_dist_to_goal)
+    {
+        velocity = distance_to_goal;
+        rose20_common::setVectorLengthXY(&velocity.x, &velocity.y, min_velocity);
+        return true;
+    }
+
+    rose20_common::setVectorLengthXY(&velocity.x, &velocity.y, rose20_common::getVectorLengthXY(distance_to_goal.x, distance_to_goal.y)-min_dist_to_goal);
+
+    velocity.x = ((max_velocity - min_velocity)/max_dist_velocity)*distance_to_goal.x;
+    velocity.y = ((max_velocity - min_velocity)/max_dist_velocity)*distance_to_goal.y;
+    ROS_DEBUG("calculated velocity = (%f,%f)", velocity.x, velocity.y);
+
+    // limit max
+     rose20_common::limitVectorLengthXY(&velocity.x, &velocity.y, max_velocity);
+
+    // Limit min
+    if(rose20_common::getVectorLengthXY(velocity.x, velocity.y) < min_velocity)
+        rose20_common::setVectorLengthXY(&velocity.x, &velocity.y, min_velocity);
+
+    ROS_DEBUG("end velocity = (%f,%f)", velocity.x, velocity.y);
+    return true;
+}
+
 
 } // rose_conversions

@@ -61,6 +61,23 @@ geometry_msgs::Quaternion   RPYToQuaterion( const double& roll, const double& pi
 Point           point32ToPoint( const Point32 point32 );
 Point32         pointToPoint32( const Point point );
 
+const char* byteToBinary(int x);
+
+//! @todo MdL [QSTN]: Move to other package?
+bool getRampedVelocity(  const double& min_velocity, 
+                         const double& max_velocity, 
+                         const double& min_dist_to_goal, 
+                         const double& max_dist_velocity,
+                         const double& distance_to_goal,
+                               double& velocity );
+
+bool getRampedVelocity(  const double& min_velocity, 
+                         const double& max_velocity, 
+                         const double& min_dist_to_goal, 
+                         const double& max_dist_velocity,
+                         const rose20_common::geometry::Point& distance_to_goal,
+                               rose20_common::geometry::Point& velocity);
+
 } // rose_conversions
 
 #endif // CONVERSIONS_HPP
