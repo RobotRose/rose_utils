@@ -25,7 +25,7 @@ add_library(rose_geometry
 	SHARED
 	src/point.cpp
 	src/stamped.cpp
-	src/geomtry.cpp
+	src/geometry.cpp
 )
 
 target_link_libraries(rose_geometry ${catkin_LIBRARIES})

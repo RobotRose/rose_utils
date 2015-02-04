@@ -21,6 +21,11 @@
 #include <geometry_msgs/Vector3.h>
 #include <geometry_msgs/Quaternion.h>
 
+#include <tf/transform_listener.h> 
+
+#include "rose_geometry/point.hpp"
+#include "rose_geometry/stamped.hpp"
+
 using geometry_msgs::Point;
 using geometry_msgs::Pose;
 using geometry_msgs::PoseStamped;
