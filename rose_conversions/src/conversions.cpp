@@ -202,8 +202,8 @@ bool getRampedVelocity(  const double& min_velocity,
                          const double& max_velocity, 
                          const double& min_dist_to_goal, 
                          const double& max_dist_velocity,
-                         const rose20_common::geometry::Point& distance_to_goal,
-                               rose20_common::geometry::Point& velocity)
+                         const rose_geometry::Point& distance_to_goal,
+                               rose_geometry::geometry::Point& velocity)
 {
     ROS_DEBUG("getRampedVelocity: minvel: %f, maxvel: %f, mindisttogoal: %f, max_dist_vel: %f, distance to goal: (%f,%f)", 
         min_velocity, 
@@ -213,29 +213,92 @@ bool getRampedVelocity(  const double& min_velocity,
         distance_to_goal.x,
         distance_to_goal.y);
 
-    if (rose20_common::getVectorLengthXY(distance_to_goal.x, distance_to_goal.y) < min_dist_to_goal)
+    if (rose_geometry::getVectorLengthXY(distance_to_goal.x, distance_to_goal.y) < min_dist_to_goal)
     {
         velocity = distance_to_goal;
-        rose20_common::setVectorLengthXY(&velocity.x, &velocity.y, min_velocity);
+        rose_geometry::setVectorLengthXY(&velocity.x, &velocity.y, min_velocity);
         return true;
     }
 
-    rose20_common::setVectorLengthXY(&velocity.x, &velocity.y, rose20_common::getVectorLengthXY(distance_to_goal.x, distance_to_goal.y)-min_dist_to_goal);
+    rose_geometry::setVectorLengthXY(&velocity.x, &velocity.y, rose_geometry::getVectorLengthXY(distance_to_goal.x, distance_to_goal.y)-min_dist_to_goal);
 
     velocity.x = ((max_velocity - min_velocity)/max_dist_velocity)*distance_to_goal.x;
     velocity.y = ((max_velocity - min_velocity)/max_dist_velocity)*distance_to_goal.y;
     ROS_DEBUG("calculated velocity = (%f,%f)", velocity.x, velocity.y);
 
     // limit max
-     rose20_common::limitVectorLengthXY(&velocity.x, &velocity.y, max_velocity);
+     rose_geometry::limitVectorLengthXY(&velocity.x, &velocity.y, max_velocity);
 
     // Limit min
-    if(rose20_common::getVectorLengthXY(velocity.x, velocity.y) < min_velocity)
-        rose20_common::setVectorLengthXY(&velocity.x, &velocity.y, min_velocity);
+    if(rose_geometry::getVectorLengthXY(velocity.x, velocity.y) < min_velocity)
+        rose_geometry::setVectorLengthXY(&velocity.x, &velocity.y, min_velocity);
 
     ROS_DEBUG("end velocity = (%f,%f)", velocity.x, velocity.y);
     return true;
 }
 
+bool limit(float min, float max, float* number)
+{
+    if(min > max)
+        throw("min > max");
+
+    if(*number < min)
+    {
+        *number = min;
+        return true;
+    }
+
+    if(*number > max)
+    {
+        *number = max;
+        return true;
+    }
+
+    return false;
+}
+
+// Returns true if number is altered
+//! @todo: Make unit tests
+bool limit(double min, double max, double* number)
+{
+    if(min > max)
+        throw("min > max");
+
+    if(*number < min)
+    {
+        *number = min;
+        return true;
+    }
+
+    if(*number > max)
+    {
+        *number = max;
+        return true;
+    }
+
+    return false;
+}
+
+// Returns true if number is altered
+//! @todo: Make unit tests
+bool limit(int min, int max, int* number)
+{
+    if(min > max)
+        throw("min > max");
+
+    if(*number < min)
+    {
+        *number = min;
+        return true;
+    }
+
+    if(*number > max)
+    {
+        *number = max;
+        return true;
+    }
+
+    return false;
+}
 
 } // rose_conversions

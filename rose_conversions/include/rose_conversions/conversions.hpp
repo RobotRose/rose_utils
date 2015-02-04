@@ -31,6 +31,9 @@
 #include <geometry_msgs/Vector3.h>
 #include <geometry_msgs/Quaternion.h>
 
+#include "rose_geometry/point.hpp"
+#include "rose_geometry/geometry.hpp"
+
 using geometry_msgs::Point32;
 using geometry_msgs::Point;
 using geometry_msgs::Pose;
@@ -77,8 +80,12 @@ bool getRampedVelocity(  const double& min_velocity,
                          const double& max_velocity, 
                          const double& min_dist_to_goal, 
                          const double& max_dist_velocity,
-                         const rose20_common::geometry::Point& distance_to_goal,
-                               rose20_common::geometry::Point& velocity);
+                         const rose_geometry::Point& distance_to_goal,
+                               rose_geometry::Point& velocity);
+
+bool limit(float min, float max, float* number);
+bool limit(double min, double max, double* number);
+bool limit(int min, int max, int* number);
 
 } // rose_conversions
 

@@ -4,6 +4,8 @@ project(rose_conversions)
 find_package(catkin REQUIRED
 	COMPONENTS
 		geometry_msgs
+		rose_conversions
+		rose_geometry
 	)
 
 set(CMAKE_CXX_FLAGS "-std=c++0x -fPIC -g")
@@ -12,7 +14,7 @@ catkin_package(
     INCLUDE_DIRS 
 		include
     LIBRARIES 
-		rose_conversions
+		rose_conversions rose_geometry
 )
 
 include_directories(
