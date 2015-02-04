@@ -39,14 +39,14 @@ using std::stringstream;
 
 namespace rose_conversions { 
 
-string  ReplaceString(string subject, const string& search, const string& replace);
-string  IntToString(int number);
+string  replaceString(string subject, const string& search, const string& replace);
+string  intToString(int number);
 
 string  floatToString(float number);
 string  doubleToString(double number);
 
-int     StringToInt(string number_string);
-double  StringToDouble(string number_string);
+int     stringToInt(string number_string);
+double  stringToDouble(string number_string);
 
 double  floatToDouble( float x );
 float   doubleToFloat( double x );

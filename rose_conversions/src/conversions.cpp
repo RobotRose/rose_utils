@@ -14,7 +14,7 @@
 
 namespace rose_conversions { 
 
-string ReplaceString(string subject, const string& search, const string& replace) {
+string replaceString(string subject, const string& search, const string& replace) {
     size_t pos = 0;
     while ((pos = subject.find(search, pos)) != string::npos) {
          subject.replace(pos, search.length(), replace);
@@ -23,7 +23,7 @@ string ReplaceString(string subject, const string& search, const string& replace
     return subject;
 }
 
-string IntToString(int number)
+string intToString(int number)
 {
    stringstream ss;//create a stringstream
    ss << number;//add number to the stream
@@ -45,7 +45,7 @@ string doubleToString(double number)
    return ss.str();//return a string with the contents of the stream
 }
 
-int StringToInt(string number_string)
+int stringToInt(string number_string)
 {
     int x = 0;
     try {
@@ -56,7 +56,7 @@ int StringToInt(string number_string)
     return x;
 }
 
-double StringToDouble(string number_string)
+double stringToDouble(string number_string)
 {
     double x = 0;
     try {
