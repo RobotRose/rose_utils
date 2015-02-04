@@ -40,12 +40,12 @@ GenericPlatform::GenericPlatform(string name)
 GenericPlatform::~GenericPlatform()
 {}
 
-const std::vector<rose20_common::geometry::Point>& GenericPlatform::getFootprint() const
+const std::vector<rose_geometry::Point>& GenericPlatform::getFootprint() const
 {
 	return footprint_;
 }
 
-bool GenericPlatform::setFootprint(const std::vector<rose20_common::geometry::Point>& new_footprint)
+bool GenericPlatform::setFootprint(const std::vector<rose_geometry::Point>& new_footprint)
 {
 	footprint_ = new_footprint;
 	return true;
@@ -100,7 +100,7 @@ bool GenericPlatform::setWheelUnits(const std::vector<WheelUnit>& wheel_units)
 	return true;
 }
 
-bool GenericPlatform::addWheelUnit(const rose20_common::geometry::Point& position, const WheelUnit& wheel_unit)
+bool GenericPlatform::addWheelUnit(const rose_geometry::Point& position, const WheelUnit& wheel_unit)
 {
 	wheelunits_.push_back(wheel_unit);
 	return true;

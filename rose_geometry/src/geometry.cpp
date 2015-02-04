@@ -309,7 +309,7 @@ bool pointInsideOrOnCircle(const geometry_msgs::Point& point, const geometry_msg
         return false;
 }
 
-bool isPointInPolygon(const rose20_common::geometry::Point& point, const vector<rose20_common::geometry::Point>& poly_points) 
+bool isPointInPolygon(const rose_geometry::Point& point, const vector<rose_geometry::Point>& poly_points) 
 {
     int i, j, nvert = poly_points.size();
     bool c = false;
@@ -326,20 +326,20 @@ bool isPointInPolygon(const rose20_common::geometry::Point& point, const vector<
 }
 
 //! @todo make unit tests
-vector<rose20_common::geometry::Point> intersectionsLineSegmentLineSegment(     const rose20_common::geometry::Point& l1a, const rose20_common::geometry::Point& l1b, 
-                                                                                const rose20_common::geometry::Point& l2a, const rose20_common::geometry::Point& l2b)
+vector<rose_geometry::Point> intersectionsLineSegmentLineSegment(     const rose_geometry::Point& l1a, const rose_geometry::Point& l1b, 
+                                                                                const rose_geometry::Point& l2a, const rose_geometry::Point& l2b)
 
 {
-    vector<rose20_common::geometry::Point> intersection_points;
+    vector<rose_geometry::Point> intersection_points;
 
     // Suppose the two line segments run from p to p + r and from q to q + s. 
     // Then any point on the first line is representable as p + t r (for a scalar parameter t) 
     // and any point on the second line as q + u s (for a scalar parameter u).
 
-    rose20_common::geometry::Point p = l1a;
-    rose20_common::geometry::Point r = l1b - l1a;
-    rose20_common::geometry::Point q = l2a;
-    rose20_common::geometry::Point s = l2b - l2a;
+    rose_geometry::Point p = l1a;
+    rose_geometry::Point r = l1b - l1a;
+    rose_geometry::Point q = l2a;
+    rose_geometry::Point s = l2b - l2a;
 
     // Check if all points are the same
     if(l1a == l1b || l2a == l2b)
@@ -384,7 +384,7 @@ vector<rose20_common::geometry::Point> intersectionsLineSegmentLineSegment(     
         if((0.0 <= t) && (t <= 1.0) && (0.0 <= u) && (u <= 1.0))
         {
             // Intersection at the point p + t r = q + u s.
-            rose20_common::geometry::Point intersection_point = p + (t*r);
+            rose_geometry::Point intersection_point = p + (t*r);
             intersection_points.push_back(intersection_point.getROSmsg());
         }
         // else no intersection
@@ -401,13 +401,13 @@ vector<rose20_common::geometry::Point> intersectionsLineSegmentLineSegment(     
     return intersection_points;
 }
 
-vector<rose20_common::geometry::Point> intersectionsLineSegmentCircle(  const rose20_common::geometry::Point& linepoint_a, 
-                                                                        const rose20_common::geometry::Point& linepoint_b, 
-                                                                        const rose20_common::geometry::Point& circle_center, 
+vector<rose_geometry::Point> intersectionsLineSegmentCircle(  const rose_geometry::Point& linepoint_a, 
+                                                                        const rose_geometry::Point& linepoint_b, 
+                                                                        const rose_geometry::Point& circle_center, 
                                                                         const float& r)
 {
-    rose20_common::geometry::Point intersection_point;
-    vector<rose20_common::geometry::Point> intersection_points;
+    rose_geometry::Point intersection_point;
+    vector<rose_geometry::Point> intersection_points;
 
     // If r equals zero check if the circle_center is on the line, if so return it, otherwise there will be no intersections.
     if(r == 0)
@@ -513,14 +513,14 @@ float distancePointLine(const Point& p, const Point& linepoint_a, const Point& l
     return numerator/sqrt(dx*dx + dy*dy);
 }
 
-float distancePointLine(    const rose20_common::geometry::Point& p, 
-                            const rose20_common::geometry::Point& linepoint_a, 
-                            const rose20_common::geometry::Point& linepoint_b)
+float distancePointLine(    const rose_geometry::Point& p, 
+                            const rose_geometry::Point& linepoint_a, 
+                            const rose_geometry::Point& linepoint_b)
 {
     return distancePointLine(p.getROSmsg(), linepoint_a.getROSmsg(), linepoint_b.getROSmsg());
 }
 
-float minimalDistancePointPolygon( const rose20_common::geometry::Point& p, const vector<rose20_common::geometry::Point>& poly_points)
+float minimalDistancePointPolygon( const rose_geometry::Point& p, const vector<rose_geometry::Point>& poly_points)
 {   
     unsigned int i;
     float min_dist = std::numeric_limits<float>::max();
@@ -546,7 +546,7 @@ float cross(const Point& a, const Point& b)
 
 // Check if point a, b and c are colinear
 //! @todo: Make unit tests
-bool aligned(const rose20_common::geometry::Point& a, const rose20_common::geometry::Point&b, const rose20_common::geometry::Point& c)
+bool aligned(const rose_geometry::Point& a, const rose_geometry::Point&b, const rose_geometry::Point& c)
 {
     // Check if the cross product of (b-a) and (c-a) is 0. 
     // Use floating point precicion epsilon
@@ -555,7 +555,7 @@ bool aligned(const rose20_common::geometry::Point& a, const rose20_common::geome
 
 // Check if point c is colinear with and inbetween points a and b
 //! @todo: Make unit tests
-bool isBetween(const rose20_common::geometry::Point& a, const rose20_common::geometry::Point&b, const rose20_common::geometry::Point& c)
+bool isBetween(const rose_geometry::Point& a, const rose_geometry::Point&b, const rose_geometry::Point& c)
 {
     // Check if aligned and if the dot product of (b-a) and (c-a) is positive and is less than the square of the distance between a and b.
     float dotProduct = (b - a).dot(c - a);
@@ -614,7 +614,7 @@ void rotatePointAroundOrigin(geometry_msgs::Point& point, float radians)
     point.y = py;
 }
 
-void rotatePointAroundOrigin(rose20_common::geometry::Point& point, float radians)
+void rotatePointAroundOrigin(rose_geometry::Point& point, float radians)
 {
     float cs = cos(radians);
     float sn = sin(radians);
@@ -644,7 +644,7 @@ void rotatePointsAroundOrigin(float radians, std::vector<geometry_msgs::Point>& 
 }
 
 //! @todo OH: Put radians as last argument
-void rotatePointsAroundOrigin(float radians, std::vector<rose20_common::geometry::Point>& points)
+void rotatePointsAroundOrigin(float radians, std::vector<rose_geometry::Point>& points)
 {
     float cs = cos(radians);
     float sn = sin(radians);
@@ -681,7 +681,7 @@ void translatePoint(const float& dx, const float& dy, geometry_msgs::Point& poin
     point.y += dy;
 }
 
-void translatePoint(const float& dx, const float& dy, rose20_common::geometry::Point& point)
+void translatePoint(const float& dx, const float& dy, rose_geometry::Point& point)
 {
     point.x += dx;
     point.y += dy;
@@ -696,7 +696,7 @@ void translatePoints(const float& dx, const float& dy, std::vector<geometry_msgs
     }
 }
 
-void translatePoints(const float& dx, const float& dy, std::vector<rose20_common::geometry::Point>& points)
+void translatePoints(const float& dx, const float& dy, std::vector<rose_geometry::Point>& points)
 {
     for(auto& point : points)
     {
