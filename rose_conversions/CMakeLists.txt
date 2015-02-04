@@ -4,7 +4,6 @@ project(rose_conversions)
 find_package(catkin REQUIRED
 	COMPONENTS
 		geometry_msgs
-		rose_conversions
 		rose_geometry
 	)
 
@@ -14,7 +13,9 @@ catkin_package(
     INCLUDE_DIRS 
 		include
     LIBRARIES 
-		rose_conversions rose_geometry
+		rose_conversions 
+	CATKIN_DEPENDS
+		rose_geometry
 )
 
 include_directories(
