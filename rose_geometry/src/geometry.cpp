@@ -377,10 +377,6 @@ vector<rose_geometry::Point> intersectionsLineSegmentLineSegment(     const rose
         float t = (q - p).cross_2d(s) / (r.cross_2d(s));
         float u = (q - p).cross_2d(r) / (r.cross_2d(s));
 
-        #ifdef DEBUG_ROSE20_COMMON_COMMON
-             printf(" t: %.2f, u: %.2f\n", t, u);
-        #endif
-
         if((0.0 <= t) && (t <= 1.0) && (0.0 <= u) && (u <= 1.0))
         {
             // Intersection at the point p + t r = q + u s.
@@ -389,14 +385,6 @@ vector<rose_geometry::Point> intersectionsLineSegmentLineSegment(     const rose
         }
         // else no intersection
     }
-
-#ifdef DEBUG_ROSE20_COMMON_COMMON
-    printf("Found points:\n");
-    for(const auto& point : intersection_points)
-    {
-        printf(" [%.2f, %.2f]\n", point.x, point.y);
-    }
-#endif
 
     return intersection_points;
 }
@@ -459,11 +447,6 @@ vector<rose_geometry::Point> intersectionsLineSegmentCircle(  const rose_geometr
     float y1 = wrapToPi(beta - alpha); // iff r_sq < dist_s_sq
     float y2 = wrapToPi(beta + alpha); // iff r_sq < dist_e_sq
 
-#ifdef DEBUG_ROSE20_COMMON_COMMON     
-    printf("\nPerp dist: %.4f, Alpha: %.4f, line_angle_a: %.4f, line_angle_b: %.4f, line_angle: %.4f, Beta: %.4f, y1: %.4f, y2: %.4f\n", perp_dist, alpha, line_angle_a, line_angle_b, line_angle, beta, y1, y2);
-    printf("sqrt(r_sq): %.4f, sqrt(dist_s_sq): %.4f, sqrt(dist_e_sq): %.4f\n", sqrt(r_sq), sqrt(dist_s_sq), sqrt(dist_e_sq));
-#endif
-
     // Create and return the valid intersection points
     if(r_sq <= dist_s_sq)
     {
@@ -485,14 +468,6 @@ vector<rose_geometry::Point> intersectionsLineSegmentCircle(  const rose_geometr
         intersection_point.y += circle_center.y;
         intersection_points.push_back(intersection_point);
     }
-
-#ifdef DEBUG_ROSE20_COMMON_COMMON
-    printf("Found points:\n");
-    for(const auto& point : intersection_points)
-    {
-        printf(" [%.2f, %.2f]\n", point.x, point.y);
-    }
-#endif
 
     return intersection_points;
 }
