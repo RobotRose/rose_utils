@@ -36,8 +36,6 @@
 
 using geometry_msgs::Point32;
 using geometry_msgs::Point;
-using geometry_msgs::Pose;
-using geometry_msgs::PoseStamped;
 
 using std::string;
 using std::stringstream;

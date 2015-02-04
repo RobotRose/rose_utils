@@ -24,6 +24,7 @@
 #include <geometry_msgs/PoseWithCovariance.h>
 #include <geometry_msgs/PoseWithCovarianceStamped.h>
 
+#include "rose_conversions/conversions.hpp"
 #include "rose_common/common.hpp"
 
 #define ROS_NAME_TF     (ROS_NAME + "|TF")

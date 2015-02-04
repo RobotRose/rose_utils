@@ -10,7 +10,7 @@
 *	Transformations
 * 
 ***********************************************************************************/
-#include "transformations/transformations.hpp"
+#include "rose_transformations/transformations.hpp"
 
 bool transformToFrame( const tf::TransformListener& tf, const std::string frame, geometry_msgs::PointStamped& point, const double timeout )
 {
@@ -72,15 +72,6 @@ bool transformToFrame( const tf::TransformListener& tf, const std::string frame,
     return false;
 }
 
-bool transformToLatestFrame( const tf::TransformListener& tf, const std::string frame, const rose_geometry::Stamped<rose_geometry::Point>& stamped_point, const double timeout )
-{
-    geometry_msgs::PointStamped point_msg;
-    point_msg.header    = stamped_point.header;
-    point_msg.point     = stamped_point.data.getROSmsg();
-
-    return transformToLatestFrame(tf, frame, point_msg, timeout);
-}
-
 bool transformToLatestFrame( const tf::TransformListener& tf, const std::string frame, geometry_msgs::PointStamped& point, const double timeout )
 {
     geometry_msgs::PointStamped    transformed_point;
@@ -139,6 +130,15 @@ bool transformToLatestFrame( const tf::TransformListener& tf, const std::string 
     }
 
     return false;
+}
+
+bool transformToLatestFrame( const tf::TransformListener& tf, const std::string frame, const rose_geometry::Stamped<rose_geometry::Point>& stamped_point, const double timeout )
+{
+    geometry_msgs::PointStamped point_msg;
+    point_msg.header    = stamped_point.header;
+    point_msg.point     = stamped_point.data.getROSmsg();
+
+    return transformToLatestFrame(tf, frame, point_msg, timeout);
 }
 
 bool transformToFrameNow( const tf::TransformListener& tf, const std::string frame, geometry_msgs::PointStamped& point, const double timeout )
