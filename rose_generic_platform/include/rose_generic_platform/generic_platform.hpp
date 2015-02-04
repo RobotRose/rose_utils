@@ -20,7 +20,7 @@
 
 #include "rose_common/common.hpp"
 #include "rose20_common/wheel_unit.hpp"
-#include "rose20_common/geometry/point.hpp"
+#include "rose_geometry/point.hpp"
 
 class GenericPlatform
 {
