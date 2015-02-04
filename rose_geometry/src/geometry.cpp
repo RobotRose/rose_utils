@@ -161,7 +161,7 @@ float getAngle(const geometry_msgs::Point& point_a, const Point& point_b)
     return atan2(dy, dx);
 }
 
-float getAngle(const Pose& pose_a, const Pose& pose_b)
+float getAngle(const geometry_msgs::Pose& pose_a, const geometry_msgs::Pose& pose_b)
 {
     float dx        = pose_b.position.x - pose_a.position.x;
     float dy        = pose_b.position.y - pose_a.position.y;
@@ -475,7 +475,7 @@ vector<rose_geometry::Point> intersectionsLineSegmentCircle(  const rose_geometr
 // Calculate perpendicular distance of point p to line discribed by linepoint_a and linepoint_b
 // Infinite line (not segment), returns 0 if linepoints a and b are the same
 // Returns signed distance, positive distance on the left side and negative on the right
-float distancePointLine(const Point& p, const Point& linepoint_a, const Point& linepoint_b)
+float distancePointLine(const geometry_msgs::Point& p, const geometry_msgs::Point& linepoint_a, const geometry_msgs::Point& linepoint_b)
 {
     float dx = linepoint_b.x - linepoint_a.x;
     float dy = linepoint_b.y - linepoint_a.y;
