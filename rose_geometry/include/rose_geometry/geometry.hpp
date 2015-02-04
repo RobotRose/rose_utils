@@ -107,12 +107,6 @@ double  getVectorLengthXY(double x, double y);
 float   getVectorLengthXYZ(float x, float y, float z);
 double  getVectorLengthXYZ(double x, double y, double z);
 
-template <typename T> 
-int sgn(T val) 
-{
-    return (T(0) < val) - (val < T(0));
-}
-
 } // namespace rose_geometry
 
 #endif // GEOMETRY_HPP

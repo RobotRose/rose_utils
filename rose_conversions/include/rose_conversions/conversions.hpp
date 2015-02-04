@@ -87,6 +87,12 @@ bool limit(float min, float max, float* number);
 bool limit(double min, double max, double* number);
 bool limit(int min, int max, int* number);
 
+template <typename T> 
+int sgn(T val) 
+{
+    return (T(0) < val) - (val < T(0));
+}
+
 } // rose_conversions
 
 #endif // CONVERSIONS_HPP
