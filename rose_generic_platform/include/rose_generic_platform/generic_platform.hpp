@@ -19,7 +19,7 @@
 #include <ros/ros.h>
 
 #include "rose_common/common.hpp"
-#include "rose20_common/wheel_unit.hpp"
+#include "opteq_wheelunits_01/wheel_unit.hpp"
 #include "rose_geometry/point.hpp"
 
 class GenericPlatform
