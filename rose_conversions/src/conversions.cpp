@@ -203,7 +203,7 @@ bool getRampedVelocity(  const double& min_velocity,
                          const double& min_dist_to_goal, 
                          const double& max_dist_velocity,
                          const rose_geometry::Point& distance_to_goal,
-                               rose_geometry::geometry::Point& velocity)
+                               rose_geometry::Point& velocity)
 {
     ROS_DEBUG("getRampedVelocity: minvel: %f, maxvel: %f, mindisttogoal: %f, max_dist_vel: %f, distance to goal: (%f,%f)", 
         min_velocity, 
