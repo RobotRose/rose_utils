@@ -8,8 +8,10 @@
   <license>BSD</license>
   <buildtool_depend>catkin</buildtool_depend>
 
+  <build_depend>opteq_wheelunits_01</build_depend>
   <build_depend>rose_common</build_depend>
 
+  <run_depend>opteq_wheelunits_01</run_depend>
   <run_depend>rose_common</run_depend>
 
   <export>

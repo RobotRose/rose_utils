@@ -13,10 +13,10 @@
 #ifndef GENERIC_PLATFORM_HPP
 #define GENERIC_PLATFORM_HPP
 
+#include <ros/ros.h>
+
 #include <stdio.h>
 #include <iostream>
-
-#include <ros/ros.h>
 
 #include "rose_common/common.hpp"
 #include "opteq_wheelunits_01/wheel_unit.hpp"

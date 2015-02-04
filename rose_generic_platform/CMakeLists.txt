@@ -3,6 +3,7 @@ project(rose_generic_platform)
 
 find_package(catkin REQUIRED
 	COMPONENTS
+		opteq_wheelunits_01
 		rose_common
 	)
 
@@ -13,6 +14,9 @@ catkin_package(
 		include
     LIBRARIES 
 		rose_generic_platform
+	CATKIN_DEPENDS
+		opteq_wheelunits_01
+		rose_common 
 )
 
 include_directories(
