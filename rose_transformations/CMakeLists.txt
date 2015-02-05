@@ -7,6 +7,7 @@ find_package(catkin REQUIRED
 		rose_conversions
 		rose_common
 		rose_geometry
+		tf
 	)
 
 set(CMAKE_CXX_FLAGS "-std=c++0x -fPIC -g")
@@ -17,7 +18,9 @@ catkin_package(
     LIBRARIES 
 		rose_transformations
 	CATKIN_DEPENDS
-		rose_geometry
+		rose_geometry 
+		tf
+	DEPENDS
 )
 
 include_directories(
