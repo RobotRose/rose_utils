@@ -12,6 +12,8 @@
 ***********************************************************************************/
 #include "rose_transformations/transformations.hpp"
 
+namespace rose_transformations { 
+
 bool transformToFrame( const tf::TransformListener& tf, const std::string frame, geometry_msgs::PointStamped& point, const double timeout )
 {
     geometry_msgs::PointStamped    transformed_point;
@@ -375,3 +377,5 @@ bool setXYZInFrame ( const tf::TransformListener& tf, const std::string frame, c
 
     return true;
 }
+
+} //namespace rose_transformations
