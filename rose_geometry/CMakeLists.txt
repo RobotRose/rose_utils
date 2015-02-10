@@ -14,6 +14,10 @@ catkin_package(
 		include
     LIBRARIES 
 		rose_geometry
+	CATKIN_DEPENDS
+		geometry_msgs
+		rose_common
+	DEPENDS
 )
 
 include_directories(
