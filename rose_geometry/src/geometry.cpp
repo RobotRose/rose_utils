@@ -154,7 +154,7 @@ void limitVectorLengthXY(double* x, double* y, double limit_length)
   *y *= factor;
 }
 
-float getAngle(const geometry_msgs::Point& point_a, const Point& point_b)
+float getAngle(const geometry_msgs::Point& point_a, const geometry_msgs::Point& point_b)
 {
     float dx        = point_b.x - point_a.x;
     float dy        = point_b.y - point_a.y;
@@ -168,7 +168,7 @@ float getAngle(const geometry_msgs::Pose& pose_a, const geometry_msgs::Pose& pos
     return atan2(dy, dx);
 }
 
-float getAngle(const float& angle, const Point& point_b)
+float getAngle(const float& angle, const geometry_msgs::Point& point_b)
 {
     float v1_x = 1.0;
     float v1_y = 0.0;

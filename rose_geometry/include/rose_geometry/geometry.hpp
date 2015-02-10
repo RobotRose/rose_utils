@@ -43,8 +43,8 @@ void    setVectorLengthXY(double* x, double* y, double wanted_length);
 void    limitVectorLengthXY(float* x, float* y, float limit_length);
 void    limitVectorLengthXY(double* x, double* y, double limit_length);
 float   getAngle(const geometry_msgs::Point& point_a, const geometry_msgs::Point& point_b);
-float   getAngle(const float& angle, const geometry_msgs::Point& point_b);
 float   getAngle(const geometry_msgs::Pose& pose_a, const geometry_msgs::Pose& pose_b);
+float   getAngle(const float& angle, const geometry_msgs::Point& point_b);
 
 bool  wrapToHalfPi(float* angle);
 float wrapToHalfPi(float angle);
