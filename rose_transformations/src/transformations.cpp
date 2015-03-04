@@ -212,7 +212,7 @@ bool getFrameInFrame( const tf::TransformListener& tf_listener, const std::strin
         tf_listener.lookupTransform(in_frame, frame, ros::Time(0), transform);
 
         stamped_pose.header.frame_id    = in_frame;
-        stamped_pose.header.stamp       = ros::Time::now();
+        stamped_pose.header.stamp       = transform.stamp_;
         stamped_pose.pose.position.x    = (double)transform.getOrigin().x();
         stamped_pose.pose.position.y    = transform.getOrigin().y();
         stamped_pose.pose.position.z    = transform.getOrigin().z();
