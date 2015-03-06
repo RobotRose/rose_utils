@@ -28,7 +28,7 @@ class Stamped
   	Stamped()
 	{}
 
-	Stamped(const std_msgs::Header& init_header, const T& new_data)
+	Stamped(std_msgs::Header init_header, T new_data)
 	{
 		header 	= init_header;
 		data  	= new_data;
