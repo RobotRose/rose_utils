@@ -230,6 +230,7 @@ bool getFrameInFrame( const tf::TransformListener& tf_listener, const std::strin
 
 bool getLatestFrameInFrame( const tf::TransformListener& tf_listener, const std::string& frame, const std::string& in_frame, geometry_msgs::PoseStamped& stamped_pose, const double& max_age)
 {
+    ROS_INFO("getLatestFrameInFrame, frame: '%s' | in_frame '%s'", frame.c_str(), in_frame.c_str());
     tf::StampedTransform transform;
     try
     {
