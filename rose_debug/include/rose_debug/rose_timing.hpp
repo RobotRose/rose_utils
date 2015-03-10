@@ -2,12 +2,12 @@
 * Copyright: Rose B.V. (2015)
 *
 * Revision History:
-*	Author: Okke Hendriks
-*	Date  : 2015/03/10
-* 		- File created.
+*   Author: Okke Hendriks
+*   Date  : 2015/03/10
+*       - File created.
 *
 * Description:
-*	Rose timing class, to time runtime
+*   Rose timing class, to time runtime
 * 
 ***********************************************************************************/
 #ifndef ROSE_TIMING_HPP
@@ -31,10 +31,10 @@ private:
     void purge();
 
 private:
-    std::string 			name_;
-    int 					average_over_;
-    std::vector<ros::Time> 	start_times;
-    std::vector<ros::Time> 	finish_times;
+    std::string             name_;
+    int                     average_over_;
+    std::vector<ros::Time>  start_times;
+    std::vector<ros::Time>  finish_times;
 
 };
 } // namespace rose_debug

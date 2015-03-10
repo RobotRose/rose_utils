@@ -2,12 +2,12 @@
 * Copyright: Rose B.V. (2015)
 *
 * Revision History:
-*	Author: Okke Hendriks
-*	Date  : 2015/03/10
-* 		- File created.
+*   Author: Okke Hendriks
+*   Date  : 2015/03/10
+*       - File created.
 *
 * Description:
-*	Rose timing class
+*   Rose timing class
 * 
 ***********************************************************************************/
 
